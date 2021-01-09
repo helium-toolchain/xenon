@@ -38,7 +38,7 @@ namespace Xenon.Launcher
             string folder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             // Combine the base folder with your specific folder....
             string specificFolder = Path.Combine(folder, ".oxygen");
-            string launcherAccounts = Path.Combine(specificFolder, "\\launcher_accounts.json");
+            string launcherAccounts = Path.Combine(specificFolder, ".\\launcher_accounts.json");
             File.Create(launcherAccounts);
             File.WriteAllText(launcherAccounts, json);
         }

@@ -1,14 +1,15 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace Xenon.Launcher.Properties
 {
     class Login : INotifyPropertyChanged
     {
-        private string _username;
-        private string _password;
+        private String _username;
+        private String _password;
 
-        public string Username
+        public String Username
         {
             get => _username;
             set
@@ -20,7 +21,7 @@ namespace Xenon.Launcher.Properties
                 }
             }
         }
-        public string Password
+        public String Password
         {
             get => _password;
             set
@@ -34,7 +35,9 @@ namespace Xenon.Launcher.Properties
         }
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected virtual void OnPropertyChanged(
+            [CallerMemberName] 
+            String propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
