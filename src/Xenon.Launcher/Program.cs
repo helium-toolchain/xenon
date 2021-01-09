@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
@@ -13,7 +14,7 @@ namespace Xenon.Launcher
         // yet and stuff might break.
         public static void Main(String[] args)
         {
-            if(OperatingSystem.IsMacOS())
+            if (OperatingSystem.IsMacOS())
             {
                 Console.WriteLine("Xenon is part of the Helium Toolchain Project which is not supported on MacOS.\n" +
                     "Press any key to exit the application...");
@@ -22,6 +23,7 @@ namespace Xenon.Launcher
             }
 
             BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
+
         }
 
         // Avalonia configuration, don't remove; also used by visual designer.
@@ -29,5 +31,16 @@ namespace Xenon.Launcher
             => AppBuilder.Configure<App>()
                 .UsePlatformDetect()
                 .LogToDebug();
+
+        public static void Settings(string json)
+        {
+            // The folder for the roaming current user 
+            string folder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            // Combine the base folder with your specific folder....
+            string specificFolder = Path.Combine(folder, ".oxygen");
+            string launcherAccounts = Path.Combine(specificFolder, "\\launcher_accounts.json");
+            File.Create(launcherAccounts);
+            File.WriteAllText(launcherAccounts, json);
+        }
     }
 }

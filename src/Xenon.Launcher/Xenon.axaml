@@ -4,6 +4,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Xenon.Launcher.Xenon"
-        Title="AvaloniaAppTemplate">
-  Welcome to Avalonia!
+        Title="Xenon Launcher" MinHeight="450" MinWidth="900" Height="450" Width="900">
+	<Canvas Background="Gray">
+		<TextBox x:Name="Username" Canvas.Top="24" Canvas.Left="24" Width="200"
+			Watermark="Enter your username" Text="{Binding Username}"/>
+
+		<TextBox x:Name="Password" Canvas.Top="60" Canvas.Left="24" Width="200"
+			PasswordChar="*" Watermark="Enter your password" Text="{Binding Password}"/>
+
+		<Button x:Name="Login" Content="Login" Canvas.Top="100" Canvas.Left="74"
+			Width="100" Click="Login_OnClick"/>
+
+		<ComboBox x:Name="VersionBox" SelectedIndex="0" Canvas.Top="0" Canvas.Right="0" Width="100">
+			<ComboBoxItem Content="Test 1"/>
+		</ComboBox>
+	</Canvas>
 </Window>
