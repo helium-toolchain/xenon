@@ -31,13 +31,13 @@ namespace Xenon.Launcher
             var Account = new Authenticate();
 
             Account.ObtainAccessToken(Login.Username, Login.Password);
-            string ACCESS_TOKEN = Account.GetAccessToken();
+            string AccessToken = Account.GetAccessToken();
 
             string Path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             string OxygenPath = Path + "\\.oxygen";
 
             Directory.CreateDirectory(OxygenPath);
-            File.WriteAllText(OxygenPath + "\\launcher_accounts.json", ACCESS_TOKEN);
+            File.WriteAllText(OxygenPath + "\\launcher_accounts.json", AccessToken);
 
 
         }
