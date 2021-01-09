@@ -31,7 +31,7 @@ namespace Xenon.Launcher
             var Account = new Authenticate();
 
             Account.ObtainAccessToken(Login.Username, Login.Password);
-            string AccessToken = Account.GetAccessToken();
+            string AccessToken = Account.ObtainAccessToken();
 
             string Path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             string OxygenPath = Path + ".\\.oxygen";
