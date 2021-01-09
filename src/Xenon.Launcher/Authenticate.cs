@@ -6,10 +6,10 @@ namespace Xenon.Launcher
 {
     class Authenticate
     {
-        string ACCESS_TOKEN;
+        string AccessToken;
         public string GetAccessToken()
         {
-            return ACCESS_TOKEN;
+            return AccessToken;
         }
         public void ObtainAccessToken(string username, string password)
         {
@@ -29,7 +29,7 @@ namespace Xenon.Launcher
                 using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                 {
                     var result = streamReader.ReadToEnd();
-                    ACCESS_TOKEN = result;
+                    AccessToken = result;
                 }
             }
         }
