@@ -32,13 +32,13 @@ namespace Xenon.Launcher
                 .UsePlatformDetect()
                 .LogToDebug();
 
-        public static void Settings(string json)
+        public static void Settings(String json)
         {
             // The folder for the roaming current user 
-            string folder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            String folder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             // Combine the base folder with your specific folder....
-            string specificFolder = Path.Combine(folder, ".oxygen");
-            string launcherAccounts = Path.Combine(specificFolder, ".\\launcher_accounts.json");
+            String specificFolder = Path.Combine(folder, ".oxygen");
+            String launcherAccounts = Path.Combine(specificFolder, ".\\launcher_accounts.json");
             File.Create(launcherAccounts);
             File.WriteAllText(launcherAccounts, json);
         }
