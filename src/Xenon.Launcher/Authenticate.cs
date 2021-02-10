@@ -20,7 +20,7 @@ namespace Xenon.Launcher
             streamWriter.Write(json);
             streamWriter.Flush();
             streamWriter.Close();
-
+            
             var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
             using var streamReader = new StreamReader(httpResponse.GetResponseStream());
             var result = streamReader.ReadToEnd();

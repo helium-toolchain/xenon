@@ -6,6 +6,7 @@ using Xenon.Launcher.Properties;
 using Newtonsoft.Json;
 using System.IO;
 using System;
+using System.Diagnostics;
 
 namespace Xenon.Launcher
 {
@@ -23,6 +24,7 @@ namespace Xenon.Launcher
         {
             AvaloniaXamlLoader.Load(this);
             this.FindControl<Button>("Login");
+            this.FindControl<Button>("Play");
         }
         public void Login_OnClick(object sender, RoutedEventArgs args)
 
@@ -31,13 +33,17 @@ namespace Xenon.Launcher
             var Account = new Authenticate();
 
             Account.ObtainAccessToken(Login.Username, Login.Password);
-            string AccessToken = Account.ObtainAccessToken();
 
-            string Path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            string OxygenPath = Path + ".\\.oxygen";
+            String Path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            String OxygenPath = Path + ".\\.oxygen";
 
             Directory.CreateDirectory(OxygenPath);
-            File.WriteAllText(OxygenPath + ".\\launcher_accounts.json", AccessToken);
+            File.WriteAllText(OxygenPath + ".\\launcher_accounts.json", Account.AccessToken);
+        }
+        public void Play_OnClick(object sender, RoutedEventArgs args)
+
+        {
+            //Process.Start();
         }
     }
 }
