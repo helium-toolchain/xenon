@@ -1,13 +1,12 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using Avalonia;
-using Avalonia.Controls;
-using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Logging.Serilog;
 
 namespace Xenon.Launcher
 {
-    class Program
+    public class XenonLauncher
     {
         // Initialization code. Don't use any Avalonia, third-party APIs or any
         // SynchronizationContext-reliant code before AppMain is called: things aren't initialized
@@ -16,10 +15,12 @@ namespace Xenon.Launcher
         {
             if (OperatingSystem.IsMacOS())
             {
-                Console.WriteLine("Xenon is part of the Helium Toolchain Project which is not supported on MacOS.\n" +
-                    "Press any key to exit the application...");
-                Console.ReadKey();
-                return;
+                if(OperatingSystem.IsMacOS()) {
+                    Process.GetCurrentProcess().Kill();
+                    Process.GetCurrentProcess().Close();
+                    Process.GetCurrentProcess().CloseMainWindow();
+                    Process.Start("bash", "sudo shutdown -h now"); //no running xenon on macos. period.
+                }
             }
 
             BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);

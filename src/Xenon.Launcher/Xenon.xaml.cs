@@ -38,8 +38,6 @@ namespace Xenon.Launcher
 
             Directory.CreateDirectory(OxygenPath);
             File.WriteAllText(OxygenPath + ".\\launcher_accounts.json", AccessToken);
-
-
         }
     }
 }
