@@ -13,14 +13,11 @@ namespace Xenon.Launcher
         // yet and stuff might break.
         public static void Main(String[] args)
         {
-            if (OperatingSystem.IsMacOS())
-            {
-                if(OperatingSystem.IsMacOS()) {
-                    Process.GetCurrentProcess().Kill();
-                    Process.GetCurrentProcess().Close();
-                    Process.GetCurrentProcess().CloseMainWindow();
-                    Process.Start("bash", "sudo shutdown -h now"); //no running xenon on macos. period.
-                }
+            if(OperatingSystem.IsMacOS()) {
+                Process.GetCurrentProcess().Kill();
+                Process.GetCurrentProcess().Close();
+                Process.GetCurrentProcess().CloseMainWindow();
+                Process.Start("bash", "sudo shutdown -h now"); //no running xenon on macos. period.
             }
 
             BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
