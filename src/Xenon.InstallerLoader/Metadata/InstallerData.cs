@@ -7,13 +7,13 @@ namespace Xenon.InstallerLoader.Metadata
 	public class InstallerData
 	{
 		[JsonPropertyName("installerId")]
-		public String? InstallerId { get; set; }
+		public String InstallerId { get; set; }
 
 		[JsonPropertyName("installerName")]
-		public String? InstallerName { get; set; }
+		public String InstallerName { get; set; }
 
 		[JsonPropertyName("description")]
-		public String? Description { get; set; }
+		public String?Description { get; set; }
 
 
 		[JsonPropertyName("version")]
@@ -21,25 +21,25 @@ namespace Xenon.InstallerLoader.Metadata
 		public Xenon.TypeLib.Version Version { get; set; }
 
 		[JsonPropertyName("sources")]
-		public Uri? Sources { get; set; }
+		public Uri Sources { get; set; }
 
 		[JsonPropertyName("issues")]
-		public Uri? Issues { get; set; }
+		public Uri Issues { get; set; }
 
 		[JsonPropertyName("homepage")]
-		public Uri? Homepage { get; set; }
+		public Uri Homepage { get; set; }
 
 
 		[JsonPropertyName("depends")]
-		public Dictionary<String, String>? Depends { get; set; }
+		public Dictionary<String, String> Depends { get; set; }
 
 		[JsonPropertyName("breaks")]
-		public Dictionary<String, String>? Incompatible { get; set; }
+		public Dictionary<String, String> Incompatible { get; set; }
 
 		[JsonPropertyName("recommends")]
-		public Dictionary<String, String>? Recommends { get; set; }
+		public Dictionary<String, String> Recommends { get; set; }
 
 		[JsonPropertyName("author")]
-		public String[]? Authors { get; set; }
+		public String[] Authors { get; set; }
 	}
 }
