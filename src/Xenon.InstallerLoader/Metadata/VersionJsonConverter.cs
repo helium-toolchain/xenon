@@ -8,9 +8,7 @@ namespace Xenon.InstallerLoader.Metadata
 	{
 		public override TypeLib.Version Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
 		{
-#pragma warning disable CS8602
 			String[] sv = reader.GetString().Split('.');
-#pragma warning restore CS8602
 
 			if(sv.Length != 3)
 			{

@@ -8,15 +8,15 @@
   "issues": "https://github.com/ExaInsanity/xenon/issues",
   "homepage": "https://irisfeanora.net/",
 
-  "depends": {
+  "depends": [
 
-  },
-  "breaks": {
+  ],
+  "breaks": [
 
-  },
-  "recommends": {
-    "mojangserver": "*"
-  },
+  ],
+  "recommends": [
+    "mojangserver"
+  ],
 
   "authors": [
     "ExaInsanity",
