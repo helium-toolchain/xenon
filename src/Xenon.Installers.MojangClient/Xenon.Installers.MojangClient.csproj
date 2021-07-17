@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<DebugType>none</DebugType>
+		<ProduceReferenceAssembly>False</ProduceReferenceAssembly>
+		<RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Remove="mojangclient.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="mojangclient.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</EmbeddedResource>
+	</ItemGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Exec Command="if not exist &quot;$(TargetDir)\installers&quot; mkdir $(TargetDir)\installers" />
+		<Exec Command="move $(TargetDir)\Xenon.Installers.MojangClient.* $(TargetDir)\installers" />
+		<Exec Command="move $(TargetDir)\mojangclient.json $(TargetDir)\installers" />
+	</Target>
+</Project>
