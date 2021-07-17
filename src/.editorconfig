@@ -16,7 +16,7 @@ csharp_new_line_before_catch = true
 #require members of object intializers to be on separate lines
 csharp_new_line_before_members_in_object_initializers = true
 #require braces to be on a new line for methods, object_collection_array_initializers, and types (also known as "Allman" style)
-csharp_new_line_before_open_brace = methods, object_collection_array_initializers, types
+csharp_new_line_before_open_brace =all
 
 #Formatting - organize using options
 dotnet_separate_import_directive_groups = true
@@ -109,3 +109,16 @@ dotnet_naming_style.pascal_case.capitalization = pascal_case
 
 dotnet_naming_style.begins_with_i.required_prefix = I
 dotnet_naming_style.begins_with_i.capitalization = pascal_case
+insert_final_newline=true
+
+# CS8604: Possible null reference argument.
+dotnet_diagnostic.CS8604.severity = silent
+
+# CS8618: Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+dotnet_diagnostic.CS8618.severity = silent
+
+# CS8602: Dereference of a possibly null reference.
+dotnet_diagnostic.CS8602.severity = silent
+
+[*.{cs,vb}]
+indent_style=tab
