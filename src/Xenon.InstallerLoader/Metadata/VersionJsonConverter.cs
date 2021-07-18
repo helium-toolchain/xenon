@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace Xenon.InstallerLoader.Metadata
 {
-	class VersionJsonConverter : JsonConverter<Xenon.TypeLib.Version>
+	public class VersionJsonConverter : JsonConverter<Xenon.TypeLib.Version>
 	{
 		public override TypeLib.Version Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
 		{

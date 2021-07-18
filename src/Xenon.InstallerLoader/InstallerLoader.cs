@@ -4,16 +4,21 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text.Json;
+using System.Threading.Tasks;
 
 using Xenon.InstallerLoader.Metadata;
 
 namespace Xenon.InstallerLoader
 {
-    public class InstallerLoader
-    {
-        private readonly Dictionary<String, IInstaller> __installers = new();
+	internal sealed class InstallerLoader
+	{
+		private readonly Dictionary<String, IInstaller> __installers = new();
 		private readonly Dictionary<String, Version> __installerVersions = new();
 		private readonly Dictionary<String, IInstallHandler> __installHandlers = new();
+
+		private readonly List<InstallerData> __tempData = new();
+
+		public event Action<String, String> MissingRecommendedInstallerEvent;
 
 		public void LoadInstallers()
 		{
@@ -39,12 +44,66 @@ namespace Xenon.InstallerLoader
 
 		private void ResolveDependencies(String[] jsons)
 		{
-			List<InstallerData> data = new();
 
 			foreach(String v in jsons)
 			{
-				data.Add(JsonSerializer.Deserialize<InstallerData>(v));
+				__tempData.Add(JsonSerializer.Deserialize<InstallerData>(v));
+			}
+
+			foreach(InstallerData v in __tempData)
+			{
+				Task.Run(() => 
+				{ 
+					ResolveDependency(v); 
+				});
 			}
 		}
-    }
+
+		private void ResolveDependency(InstallerData data)
+		{
+			// duplicate installer check
+			if((from x in __tempData
+				where x.InstallerId == data.InstallerId
+				select x).Count() > 1)
+			{
+				throw new InvalidDataException($"Duplicate installer {data.InstallerId}");
+			}
+
+			// dependency check
+			foreach(String x in data.Depends)
+			{
+				if(!__tempData.Any(xm =>
+				{
+					return xm.InstallerId == x;
+				}))
+				{
+					throw new InvalidDataException($"Installer {data.InstallerId} is missing dependency {x}, aborting...");
+				}
+			}
+
+			// incompatibility check
+			foreach(String x in data.Incompatible)
+			{
+				if(__tempData.Any(xm =>
+				{
+					return xm.InstallerId == x;
+				}))
+				{
+					throw new InvalidDataException($"Installer {data.InstallerId} is incompatible with {x}, aborting...");
+				}
+			}
+
+			// recommendation check
+			foreach(String x in data.Recommends)
+			{
+				if(!__tempData.Any(xm =>
+				{
+					return xm.InstallerId == x;
+				}))
+				{
+					MissingRecommendedInstallerEvent(data.InstallerId, x);
+				}
+			}
+		}
+	}
 }

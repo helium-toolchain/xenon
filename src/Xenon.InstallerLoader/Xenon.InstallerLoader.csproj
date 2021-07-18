@@ -6,10 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Helium.Commons.Logging" Version="0.0.2" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Xenon.TypeLib\Xenon.TypeLib.csproj" />
   </ItemGroup>
 
