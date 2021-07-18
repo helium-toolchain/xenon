@@ -20,6 +20,7 @@
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
 		<Exec Command="if not exist &quot;$(TargetDir)\installers&quot; mkdir $(TargetDir)\installers" />
+		<Exec Command="del $(TargetDir)\Xenon.Installers.MojangClient.deps.json" />
 		<Exec Command="move $(TargetDir)\Xenon.Installers.MojangClient.* $(TargetDir)\installers" />
 		<Exec Command="move $(TargetDir)\mojangclient.json $(TargetDir)\installers" />
 	</Target>

@@ -31,13 +31,13 @@ namespace Xenon.InstallerLoader.Metadata
 
 
 		[JsonPropertyName("depends")]
-		public Dictionary<String, String> Depends { get; set; }
+		public String[] Depends { get; set; }
 
 		[JsonPropertyName("breaks")]
-		public Dictionary<String, String> Incompatible { get; set; }
+		public String[] Incompatible { get; set; }
 
 		[JsonPropertyName("recommends")]
-		public Dictionary<String, String> Recommends { get; set; }
+		public String[] Recommends { get; set; }
 
 		[JsonPropertyName("author")]
 		public String[] Authors { get; set; }
