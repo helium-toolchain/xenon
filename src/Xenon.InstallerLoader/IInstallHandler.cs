@@ -12,5 +12,7 @@ namespace Xenon.InstallerLoader
     public interface IInstallHandler
     {
         public void Install(String version);
+
+		public void PatchVersionMeta(String version); // only required if this is a client installer - it will not get called for server installers
     }
 }

@@ -2,6 +2,7 @@
   "installerId": "mojangclient",
   "installerName": "Official Client",
   "description": "Official installer for the official minecraft client, written and maintained by Mojang Studios",
+  "environment": "client",
 
   "version": "0.0.1",
   "sources": "https://github.com/ExaInsanity/xenon",
