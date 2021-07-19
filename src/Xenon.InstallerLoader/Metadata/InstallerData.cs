@@ -13,7 +13,11 @@ namespace Xenon.InstallerLoader.Metadata
 		public String InstallerName { get; set; }
 
 		[JsonPropertyName("description")]
-		public String?Description { get; set; }
+		public String Description { get; set; }
+
+		[JsonPropertyName("environment")]
+		[JsonConverter(typeof(EnvironmentJsonConverter))]
+		public InstallerEnvironment Environment { get; set; }
 
 
 		[JsonPropertyName("version")]
