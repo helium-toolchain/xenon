@@ -39,6 +39,13 @@ namespace Xenon.InstallerLoader
 					type.IsClass && !type.IsAbstract).ToArray();
 				Type[] handler = installerAssembly.GetExportedTypes().Where(type => typeof(IInstallHandler).IsAssignableFrom(type) &&
 					type.IsClass && !type.IsAbstract).ToArray();
+
+				IInstaller ia = (IInstaller)Activator.CreateInstance(installer[0]);
+				IInstallHandler ha = (IInstallHandler)Activator.CreateInstance(handler[0]);
+
+				__installers.Add(ia.Id, ia);
+				__installerVersions.Add(ia.Id, ia.Version);
+				__installHandlers.Add(ia.Id, ha);
 			}
 		}
 
