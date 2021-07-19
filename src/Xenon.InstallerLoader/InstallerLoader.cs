@@ -12,9 +12,10 @@ namespace Xenon.InstallerLoader
 {
 	internal sealed class InstallerLoader
 	{
-		private readonly Dictionary<String, IInstaller> __installers = new();
-		private readonly Dictionary<String, Version> __installerVersions = new();
-		private readonly Dictionary<String, IInstallHandler> __installHandlers = new();
+		internal readonly Dictionary<String, IInstaller> __installers = new();
+		internal readonly Dictionary<String, Version> __installerVersions = new();
+		internal readonly Dictionary<String, InstallerData> __installerData = new();
+		internal readonly Dictionary<String, IInstallHandler> __installHandlers = new();
 
 		private readonly List<InstallerData> __tempData = new();
 
@@ -55,10 +56,12 @@ namespace Xenon.InstallerLoader
 			foreach(String v in jsons)
 			{
 				__tempData.Add(JsonSerializer.Deserialize<InstallerData>(v));
+
 			}
 
 			foreach(InstallerData v in __tempData)
 			{
+				__installerData.Add(v.InstallerId, v);
 				Task.Run(() => 
 				{ 
 					ResolveDependency(v); 
