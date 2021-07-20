@@ -37,7 +37,7 @@ build_script:
   - dotnet build
   
 after_build:
-  - 7z a Xenon.zip %APPVEYOR_BUILD_FOLDER%\Xenon\bin\Release\*
+  - 7z a Xenon.zip %APPVEYOR_BUILD_FOLDER%\Xenon.Launcher\bin\Release\*
   
 deploy:
   - provider: NuGet
