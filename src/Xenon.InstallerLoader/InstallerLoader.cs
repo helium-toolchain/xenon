@@ -13,7 +13,7 @@ namespace Xenon.InstallerLoader
 	internal sealed class InstallerLoader
 	{
 		internal readonly Dictionary<String, IInstaller> __installers = new();
-		internal readonly Dictionary<String, Version> __installerVersions = new();
+		internal readonly Dictionary<String, Xenon.TypeLib.Version> __installerVersions = new();
 		internal readonly Dictionary<String, InstallerData> __installerData = new();
 		internal readonly Dictionary<String, IInstallHandler> __installHandlers = new();
 
