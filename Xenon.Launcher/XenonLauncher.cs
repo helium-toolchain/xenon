@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.IO;
 using Avalonia;
-using Avalonia.Logging.Serilog;
 
 namespace Xenon.Launcher
 {
