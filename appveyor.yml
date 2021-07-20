@@ -41,10 +41,10 @@ after_build:
   
 deploy:
   - provider: NuGet
-  server: https://nuget.insanity.host/api/v2/package
-  api_key:
-    secure: yC8CaUEaSqKy1DcKUdnmYTGKzjMnftXpZntnXpFuf1KNBb46tJIwlChs4QDkpEdzVO/mgsVke0S5ZcRnblSn2QVlETrUJEov6LFug2MsdcBqKkTgLuaMKqnAp+EMzdmNdxJu2XXb0/eI5hwFx10qVg==
-  symbol_server: https://nuget.emzi0767.com/api/v2/symbolpackage
+    server: https://nuget.insanity.host/api/v2/package
+    api_key:
+      secure: yC8CaUEaSqKy1DcKUdnmYTGKzjMnftXpZntnXpFuf1KNBb46tJIwlChs4QDkpEdzVO/mgsVke0S5ZcRnblSn2QVlETrUJEov6LFug2MsdcBqKkTgLuaMKqnAp+EMzdmNdxJu2XXb0/eI5hwFx10qVg==
+    symbol_server: https://nuget.emzi0767.com/api/v2/symbolpackage
   
 artifacts:
   - path: Xenon.zip
