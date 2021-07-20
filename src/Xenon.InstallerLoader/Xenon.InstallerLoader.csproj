@@ -9,7 +9,7 @@
     <Company>Helium Toolchain Project</Company>
     <PackageProjectUrl>https://irisfeanora.net/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ExaInsanity/xenon</RepositoryUrl>
-    <PackageLicenseFile>..\..\LICENSE.md</PackageLicenseFile>
+    <PackageLicenseFile>F:\helium-toolchain\xenon\src\Xenon.InstallerLoader\LICENSE.md</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
