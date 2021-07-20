@@ -1,0 +1,52 @@
+version: 0.1.0+build.{build}
+skip_tags: true
+skip_commits:
+  message: \[skip-ci]\
+max_jobs: 2
+
+image: Visual Studio 2019
+shallow_clone: true
+clone_depth: 2
+
+assembly_info:
+  patch: true
+  file: AssemblyInfo.*
+  assembly_version: "0.1.0+build.{build}"
+  
+dotnet_csproj:
+  patch: true
+  file: '**\.*csproj'
+  version: '{version}'
+  version_prefix: '{version}'
+  package_version: '{version}'
+  assembly_version: '{version}'
+  file_version: '{version}'
+  informational_version: '{version}'
+
+# Build
+
+platform: Any CPU
+
+configuration: Release
+
+build:
+  project: InsanityBot.sln
+  
+build_script:
+  - dotnet restore
+  - dotnet build
+  
+after_build:
+  - 7z a Xenon.zip %APPVEYOR_BUILD_FOLDER%\Xenon\bin\Release\*
+  
+deploy:
+  - provider: NuGet
+  server: https://nuget.insanity.host/api/v2/package
+  api_key:
+    secure: yC8CaUEaSqKy1DcKUdnmYTGKzjMnftXpZntnXpFuf1KNBb46tJIwlChs4QDkpEdzVO/mgsVke0S5ZcRnblSn2QVlETrUJEov6LFug2MsdcBqKkTgLuaMKqnAp+EMzdmNdxJu2XXb0/eI5hwFx10qVg==
+  symbol_server: https://nuget.emzi0767.com/api/v2/symbolpackage
+  
+artifacts:
+  - path: Xenon.zip
+    name: Release
+    type: zip
