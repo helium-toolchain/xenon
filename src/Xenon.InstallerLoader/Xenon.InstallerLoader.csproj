@@ -3,6 +3,14 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>0.0.1</Version>
+    <Authors>ExaInsanity, Zefyro</Authors>
+    <Company>Helium Toolchain Project</Company>
+    <PackageProjectUrl>https://irisfeanora.net/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ExaInsanity/xenon</RepositoryUrl>
+    <PackageLicenseFile>..\..\LICENSE.md</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <ItemGroup>
