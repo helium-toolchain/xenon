@@ -39,6 +39,8 @@ build_script:
 after_build:
   - 7z a Xenon.zip %APPVEYOR_BUILD_FOLDER%\Xenon.Launcher\bin\Release\*
   
+artifacts:
+- path: %APPVEYOR_BUILD_FOLDER%\Xenon.InstallerLoader\bin\Release\*.nupkg
 deploy:
   - provider: NuGet
     server: https://nuget.insanity.host/api/v2/package
