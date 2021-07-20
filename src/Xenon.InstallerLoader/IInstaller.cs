@@ -32,7 +32,7 @@ namespace Xenon.InstallerLoader
 		/// <summary>
 		/// Version of the installer. Should match the version in the installer.json file.
 		/// </summary>
-		public Version Version { get; }
+		public Xenon.TypeLib.Version Version { get; }
 
 		/// <summary>
 		/// Installer environment. Must match the environment in the installer.json file.
