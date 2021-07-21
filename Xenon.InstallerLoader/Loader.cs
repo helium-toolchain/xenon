@@ -64,6 +64,18 @@ namespace Xenon.InstallerLoader
 			=> __loader.__installerVersions[installerId];
 
 		/// <summary>
+		/// Gets all supported tags for one specific installer.
+		/// </summary>
+		public String[] GetTags(String installerId)
+			=> __loader.__installers[installerId].ListTags();
+
+		/// <summary>
+		/// Gets all supported versions for one specific installer, filtered by the specified tags.
+		/// </summary>
+		public String[] GetVersions(String installerId, params String[] tags)
+			=> __loader.__installers[installerId].ListVersions(tags);
+
+		/// <summary>
 		/// Installs the specified version of the specified installer.
 		/// </summary>
 		public void Install(String installerId, String version)

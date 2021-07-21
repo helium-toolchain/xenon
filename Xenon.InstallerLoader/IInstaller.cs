@@ -25,6 +25,16 @@ namespace Xenon.InstallerLoader
 		public String[] ListVersions();
 
 		/// <summary>
+		/// Return all versions matching the specified tags.
+		/// </summary>
+		public String[] ListVersions(params String[] tags);
+
+		/// <summary>
+		/// List all allowed tags for this installer.
+		/// </summary>
+		public String[] ListTags();
+
+		/// <summary>
 		/// String ID of the installer. Should match the ID in the installer.json file.
 		/// </summary>
 		public String Id { get; }
