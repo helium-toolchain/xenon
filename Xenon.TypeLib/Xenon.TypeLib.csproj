@@ -3,6 +3,14 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>0.1.1</Version>
+    <Authors>ExaInsanity, Zefyro</Authors>
+    <Company>Helium Toolchain</Company>
+    <Description>Common types used by Xenon</Description>
+    <PackageProjectUrl>https://github.com/ExaInsanity/xenon</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ExaInsanity/xenon</RepositoryUrl>
+    <PackageTags>xenon</PackageTags>
   </PropertyGroup>
 
 </Project>
