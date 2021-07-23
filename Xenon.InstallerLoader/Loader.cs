@@ -78,21 +78,21 @@ namespace Xenon.InstallerLoader
 		/// <summary>
 		/// Installs the specified version of the specified installer.
 		/// </summary>
-		public void Install(String installerId, String version)
+		public void Install(String installerId, String version, String installDirectory)
 		{
 			IInstallHandler handler = __loader.__installHandlers[installerId];
-			handler.Install(version);
+			handler.Install(version, installDirectory);
 
 			if(__loader.__installerData[installerId].Environment == InstallerEnvironment.Client)
 			{
-				handler.PatchVersionMeta(version);
+				handler.PatchVersionMeta(version, installDirectory);
 			}
 		}
 
 		/// <summary>
 		/// Patches the version metadata file of the specified version, using the specified installer.
 		/// </summary>
-		public void PatchVersionMeta(String installerId, String version)
+		public void PatchVersionMeta(String installerId, String version, String installDirectory)
 		{
 			if(__loader.__installerData[installerId].Environment == InstallerEnvironment.Server)
 			{
@@ -100,7 +100,7 @@ namespace Xenon.InstallerLoader
 			}
 
 			IInstallHandler handler = __loader.__installHandlers[installerId];
-			handler.PatchVersionMeta(version);
+			handler.PatchVersionMeta(version, installDirectory);
 		}
 	}
 }
