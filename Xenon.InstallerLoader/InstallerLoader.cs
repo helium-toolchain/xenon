@@ -20,22 +20,18 @@ namespace Xenon.InstallerLoader
 		private readonly List<InstallerData> __tempData = new();
 
 		public event Action<String, String> MissingRecommendedInstallerEvent;
+		public event Action<String, String> IncompatibleInstallerEvent;
 
 		public void LoadInstallers()
 		{
-			String[] installers = Directory.GetFiles("./installers", "*.dll");
 			String[] installerJsons = Directory.GetFiles("./installers", "*.json");
-
-			if(installers.Length != installerJsons.Length)
-			{
-				throw new InvalidOperationException($"Cannot load installers: inequal amounts of installer files and installer metadata files found.");
-			}
 
 			ResolveDependencies(installerJsons);
 
-			foreach(String v in installers)
+			foreach(InstallerData i in __tempData)
 			{
-				Assembly installerAssembly = Assembly.LoadFile(v);
+				String v = i.InstallerId;
+				Assembly installerAssembly = Assembly.LoadFile($"./installers/{i.AssemblyFileName}");
 				Type[] installer = installerAssembly.GetExportedTypes().Where(type => typeof(IInstaller).IsAssignableFrom(type) &&
 					type.IsClass && !type.IsAbstract).ToArray();
 				Type[] handler = installerAssembly.GetExportedTypes().Where(type => typeof(IInstallHandler).IsAssignableFrom(type) &&
@@ -99,7 +95,7 @@ namespace Xenon.InstallerLoader
 					return xm.InstallerId == x;
 				}))
 				{
-					throw new InvalidDataException($"Installer {data.InstallerId} is incompatible with {x}, aborting...");
+					IncompatibleInstallerEvent(data.InstallerId, x);
 				}
 			}
 

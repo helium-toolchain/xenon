@@ -19,6 +19,9 @@ namespace Xenon.InstallerLoader.Metadata
 		[JsonConverter(typeof(EnvironmentJsonConverter))]
 		public InstallerEnvironment Environment { get; set; }
 
+		[JsonPropertyName("assemblyFileName")]
+		public String AssemblyFileName { get; set; }
+
 
 		[JsonPropertyName("version")]
 		[JsonConverter(typeof(VersionJsonConverter))]
