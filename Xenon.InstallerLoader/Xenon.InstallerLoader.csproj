@@ -4,11 +4,12 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>0.1.0</Version>
+    <Version>0.2.0</Version>
     <Authors>ExaInsanity, Zefyro</Authors>
     <Company>Helium Toolchain Project</Company>
     <PackageProjectUrl>https://irisfeanora.net/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ExaInsanity/xenon</RepositoryUrl>
+    <Description>Xenon Installer base library.</Description>
   </PropertyGroup>
 
   <ItemGroup>

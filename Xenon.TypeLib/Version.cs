@@ -12,6 +12,13 @@ namespace Xenon.TypeLib
 		public UInt16 Minor { get; set; }
 		public UInt16 Hotfix { get; set; }
 
+		public Version(UInt16 Major = 0, UInt16 Minor = 0, UInt16 Hotfix = 0)
+		{
+			this.Major = Major;
+			this.Minor = Minor;
+			this.Hotfix = Hotfix;
+		}
+
 		public static Boolean operator ==(Version left, Version right)
 		{
 			return left.Major == right.Major
