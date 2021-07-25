@@ -2,7 +2,7 @@
 
 namespace Xenon.Installers.Mojang.Commons.Launchermeta
 {
-	internal class Main
+	internal class LauncherMain
 	{
 		[JsonPropertyName("latest")]
 		public Latest LatestVersions { get; set; }
