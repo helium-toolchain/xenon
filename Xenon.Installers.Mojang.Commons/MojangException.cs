@@ -18,6 +18,9 @@ namespace Xenon.Installers.Mojang.Commons
 		/*
 		 * 0 - fetching launchermeta data
 		 * 1 - parsing launchermeta data
+		 * 2 - fetching version.json
+		 * 3 - parsing version.json
+		 * 4 - fetching assets index
 		*/
 	}
 }
