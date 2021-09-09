@@ -5,6 +5,7 @@
 		Release,
 		Snapshot,
 		Beta,
-		Alpha
+		Alpha,
+		Experimental
 	}
 }

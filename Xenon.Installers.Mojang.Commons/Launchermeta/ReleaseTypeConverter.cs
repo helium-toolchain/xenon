@@ -6,6 +6,7 @@ namespace Xenon.Installers.Mojang.Commons.Launchermeta
 {
 	internal class ReleaseTypeConverter : JsonConverter<ReleaseType>
 	{
+#pragma warning disable IDE0022
 		public override ReleaseType Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
 		{
 			return reader.GetString().ToLower() switch
@@ -14,6 +15,7 @@ namespace Xenon.Installers.Mojang.Commons.Launchermeta
 				"snapshot" => ReleaseType.Snapshot,
 				"old_beta" => ReleaseType.Beta,
 				"old_alpha" => ReleaseType.Alpha,
+				"experimental" => ReleaseType.Experimental,
 				_ => throw new MojangException("Unknown release type", 1)
 			};
 		}
@@ -26,8 +28,10 @@ namespace Xenon.Installers.Mojang.Commons.Launchermeta
 				ReleaseType.Snapshot => "snapshot",
 				ReleaseType.Beta => "old_beta",
 				ReleaseType.Alpha => "old_alpha",
+				ReleaseType.Experimental => "experimental",
 				_ => throw new InvalidProgramException("The called enum member does not actually exist.")
 			});
 		}
+#pragma warning restore IDE0022
 	}
 }
