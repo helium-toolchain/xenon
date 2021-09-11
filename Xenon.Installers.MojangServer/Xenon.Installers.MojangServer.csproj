@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<DebugType>none</DebugType>
+		<ProduceReferenceAssembly>False</ProduceReferenceAssembly>
+		<RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Remove="mojangserver.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="mojangserver.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Xenon.InstallerLoader" Version="0.2.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Xenon.Installers.Mojang.Commons\Xenon.Installers.Mojang.Commons.csproj" />
+	</ItemGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Exec Command="if not exist &quot;$(TargetDir)\installers&quot; mkdir $(TargetDir)\installers" />
+		<Exec Command="del $(TargetDir)\Xenon.Installers.MojangServer.deps.json" />
+		<Exec Command="move $(TargetDir)\Xenon.Installers.MojangServer.* $(TargetDir)\installers" />
+		<Exec Command="move $(TargetDir)\mojangserver.json $(TargetDir)\installers" />
+	</Target>
+</Project>
