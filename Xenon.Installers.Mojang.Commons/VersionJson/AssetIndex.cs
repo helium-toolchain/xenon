@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace Xenon.Installers.Mojang.Commons.VersionJson
 {
-	internal class AssetIndex
+	public class AssetIndex
 	{
 		[JsonPropertyName("id")]
 		public String Id { get; set; }

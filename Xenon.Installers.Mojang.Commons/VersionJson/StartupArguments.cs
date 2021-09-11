@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Xenon.Installers.Mojang.Commons.VersionJson
 {
-	internal class StartupArguments
+	public  class StartupArguments
 	{
 		[JsonPropertyName("game")]
 		public List<Argument> GameArguments { get; set; }

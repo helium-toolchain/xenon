@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace Xenon.Installers.Mojang.Commons.VersionJson
 {
-	internal class ArgumentRule
+	public class ArgumentRule
 	{
 		[JsonPropertyName("action")]
 		public String Action { get; set; }

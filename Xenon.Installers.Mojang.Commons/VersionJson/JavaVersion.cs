@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Xenon.Installers.Mojang.Commons.VersionJson
 {
-	internal class JavaVersion
+	public class JavaVersion
 	{
 		[JsonPropertyName("component")]
 		public String Component { get; set; }

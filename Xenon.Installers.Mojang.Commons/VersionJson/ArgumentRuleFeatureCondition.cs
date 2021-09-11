@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace Xenon.Installers.Mojang.Commons.VersionJson
 {
-	internal class ArgumentRuleFeatureCondition
+	public class ArgumentRuleFeatureCondition
 	{
 		[JsonPropertyName("is_demo_user")]
 		public Boolean DemoUser { get; set; }

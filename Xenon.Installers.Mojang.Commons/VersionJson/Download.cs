@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Xenon.Installers.Mojang.Commons.VersionJson
 {
-	internal class Download
+	public class Download
 	{
 		[JsonPropertyName("sha1")]
 		public String Sha1 { get; set; }

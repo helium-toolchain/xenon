@@ -4,7 +4,7 @@ using Xenon.Installers.Mojang.Commons.Launchermeta;
 
 namespace Xenon.Installers.Mojang.Commons.VersionJson
 {
-	internal class VersionMain
+	public class VersionMain
 	{
 		[JsonPropertyName("arguments")]
 		public StartupArguments Arguments { get; set; }
