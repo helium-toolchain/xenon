@@ -1,6 +1,6 @@
 ﻿namespace Xenon.Installers.Mojang.Commons.Launchermeta
 {
-	internal enum ReleaseType
+	public enum ReleaseType
 	{
 		Release,
 		Snapshot,

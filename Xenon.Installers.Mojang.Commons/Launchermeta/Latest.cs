@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace Xenon.Installers.Mojang.Commons.Launchermeta
 {
-	internal class Latest
+	public class Latest
 	{
 		[JsonPropertyName("release")]
 		public String LatestRelease { get; set; }
