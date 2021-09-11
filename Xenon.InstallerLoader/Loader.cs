@@ -34,6 +34,17 @@ namespace Xenon.InstallerLoader
 		}
 
 		/// <summary>
+		/// Unloads all installers present in the folder.
+		/// </summary>
+		public void UnloadInstallers()
+		{
+			foreach(IInstaller v in __loader.__installers.Values)
+			{
+				v.Disable();
+			}
+		}
+
+		/// <summary>
 		/// Gets all installer IDs.
 		/// </summary>
 		public String[] GetInstallers() 
