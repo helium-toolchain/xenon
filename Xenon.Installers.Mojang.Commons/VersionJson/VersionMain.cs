@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+﻿using System.Text.Json.Serialization;
+
+using Xenon.Installers.Mojang.Commons.Launchermeta;
 
 namespace Xenon.Installers.Mojang.Commons.VersionJson
 {
@@ -29,5 +26,15 @@ namespace Xenon.Installers.Mojang.Commons.VersionJson
 
 		[JsonPropertyName("javaVersion")]
 		public JavaVersion JavaVersion { get; set; }
+
+		[JsonPropertyName("releaseTime")]
+		public DateTimeOffset ReleaseTime { get; set; }
+
+		[JsonConverter(typeof(ReleaseTypeConverter))]
+		[JsonPropertyName("type")]
+		public ReleaseType Type { get; set; }
+
+		[JsonPropertyName("libraries")]
+		public Library[] Libraries { get; set; }
 	}
 }
