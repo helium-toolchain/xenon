@@ -16,7 +16,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xenon.TypeLib", "Xenon.Type
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xenon.Installers.MojangClient", "Xenon.Installers.MojangClient\Xenon.Installers.MojangClient.csproj", "{282D0D1E-26E5-4F52-ADB1-97FCB3358F17}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xenon.Installers.Mojang.Commons", "Xenon.Installers.Mojang.Commons\Xenon.Installers.Mojang.Commons.csproj", "{91D6C645-F43A-4F6C-A8CA-4F132D04C71B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xenon.Installers.Mojang.Commons", "Xenon.Installers.Mojang.Commons\Xenon.Installers.Mojang.Commons.csproj", "{91D6C645-F43A-4F6C-A8CA-4F132D04C71B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xenon.Installers.MojangServer", "Xenon.Installers.MojangServer\Xenon.Installers.MojangServer.csproj", "{7675FD2F-1F74-4C68-8480-8C96D032D1EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +46,10 @@ Global
 		{91D6C645-F43A-4F6C-A8CA-4F132D04C71B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91D6C645-F43A-4F6C-A8CA-4F132D04C71B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91D6C645-F43A-4F6C-A8CA-4F132D04C71B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7675FD2F-1F74-4C68-8480-8C96D032D1EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7675FD2F-1F74-4C68-8480-8C96D032D1EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7675FD2F-1F74-4C68-8480-8C96D032D1EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7675FD2F-1F74-4C68-8480-8C96D032D1EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

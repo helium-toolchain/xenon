@@ -1,0 +1,26 @@
+{
+  "installerId": "mojangserver",
+  "installerName": "Official Server",
+  "description": "Official installer for the official minecraft server, written and maintained by Mojang Studios",
+  "environment": "client",
+
+  "version": "0.0.1",
+  "sources": "https://github.com/ExaInsanity/xenon",
+  "issues": "https://github.com/ExaInsanity/xenon/issues",
+  "homepage": "https://irisfeanora.net/",
+
+  "depends": [
+
+  ],
+  "breaks": [
+
+  ],
+  "recommends": [
+    "mojangclient"
+  ],
+
+  "authors": [
+    "ExaInsanity",
+    "Zefyro"
+  ]
+}
