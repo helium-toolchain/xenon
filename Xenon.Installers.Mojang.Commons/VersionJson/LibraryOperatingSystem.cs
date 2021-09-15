@@ -3,15 +3,9 @@ using System.Text.Json.Serialization;
 
 namespace Xenon.Installers.Mojang.Commons.VersionJson
 {
-	public class Library
+	public class LibraryOperatingSystem
 	{
-		[JsonPropertyName("downloads")]
-		public LibraryDownload Downloads { get; set; }
-
 		[JsonPropertyName("name")]
 		public String Name { get; set; }
-
-		[JsonPropertyName("rules")]
-		public LibraryRule[] Rules { get; set; }
 	}
 }
