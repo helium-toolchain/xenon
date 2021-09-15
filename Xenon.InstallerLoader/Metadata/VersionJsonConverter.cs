@@ -22,7 +22,7 @@ namespace Xenon.InstallerLoader.Metadata
 				Hotfix = Convert.ToUInt16(sv[2])
 			};
 		}
-		public override void Write(Utf8JsonWriter writer, TypeLib.Version value, JsonSerializerOptions options) 
+		public override void Write(Utf8JsonWriter writer, TypeLib.Version value, JsonSerializerOptions options)
 			=> writer.WriteStringValue($"{value.Major}.{value.Minor}.{value.Hotfix}");
 	}
 }

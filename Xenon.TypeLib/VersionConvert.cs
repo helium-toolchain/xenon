@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.PortableExecutable;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Xenon.TypeLib
 {
@@ -13,7 +8,7 @@ namespace Xenon.TypeLib
 			=> $"{value.Major}.{value.Minor}.{value.Hotfix}";
 
 		public static Version ToVersion(String value)
-{
+		{
 			String[] sv = value.Split('.');
 
 			if(sv.Length != 3)

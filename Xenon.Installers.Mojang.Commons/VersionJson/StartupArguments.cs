@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace Xenon.Installers.Mojang.Commons.VersionJson
 {
-	public  class StartupArguments
+	public class StartupArguments
 	{
 		[JsonPropertyName("game")]
 		public List<Argument> GameArguments { get; set; }

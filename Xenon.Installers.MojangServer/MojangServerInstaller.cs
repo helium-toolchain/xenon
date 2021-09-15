@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xenon.InstallerLoader;
 using Xenon.InstallerLoader.Metadata;
-using Xenon.Installers.Mojang.Commons;
 using Xenon.Installers.Mojang.Commons.Launchermeta;
 
 namespace Xenon.Installers.MojangServer
@@ -29,9 +24,9 @@ namespace Xenon.Installers.MojangServer
 
 		[MethodImpl(MethodImplOptions.NoInlining)]
 		public void Initialize()
-		{ 
+		{
 			MojangData.MojangHelper = new();
-			Tags = new String[]
+			this.Tags = new String[]
 			{
 				"release",
 				"snapshot",
@@ -42,12 +37,12 @@ namespace Xenon.Installers.MojangServer
 		}
 
 		public String[] ListTags()
-			=> Tags;
+			=> this.Tags;
 
 		[MethodImpl(MethodImplOptions.NoInlining)]
-		public String[] ListVersions() 
+		public String[] ListVersions()
 			=> (from x in MojangData.MojangHelper.LaunchermetaMain.Versions
-			    select x.VersionId).ToArray();
+				select x.VersionId).ToArray();
 
 		public String[] ListVersions(params String[] tags)
 		{
@@ -66,15 +61,15 @@ namespace Xenon.Installers.MojangServer
 
 		private String[] Tags;
 
-		private static ReleaseType GetReleaseType(String @string) 
+		private static ReleaseType GetReleaseType(String @string)
 			=> @string switch
-			   {
-			   	   "release" => ReleaseType.Release,
-			   	   "snapshot" => ReleaseType.Snapshot,
-			   	   "alpha" => ReleaseType.Alpha,
-			   	   "beta" => ReleaseType.Beta,
-			   	   "experimental" => ReleaseType.Experimental,
-			   	   _ => throw new ArgumentException("Unknown release type")
-			   };
+			{
+				"release" => ReleaseType.Release,
+				"snapshot" => ReleaseType.Snapshot,
+				"alpha" => ReleaseType.Alpha,
+				"beta" => ReleaseType.Beta,
+				"experimental" => ReleaseType.Experimental,
+				_ => throw new ArgumentException("Unknown release type")
+			};
 	}
 }

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Xenon.Installers.Mojang.Commons
 {
@@ -14,7 +10,7 @@ namespace Xenon.Installers.Mojang.Commons
 		}
 
 		public Int32 ExecutionSegment { get; set; }
-		
+
 		/*
 		 * 0 - fetching launchermeta data
 		 * 1 - parsing launchermeta data

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
+using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -22,7 +19,7 @@ namespace Xenon.Installers.Mojang.Commons
 			using HttpResponseMessage response = await client.GetAsync("https://launchermeta.mojang.com/mc/game/version_manifest.json");
 			result = await response.Content.ReadAsStringAsync();
 
-			return JsonSerializer.Deserialize<LauncherMain>(result) ?? 
+			return JsonSerializer.Deserialize<LauncherMain>(result) ??
 				throw new MojangException("Invalid data downloaded from launchermeta.mojang.com", 0);
 		}
 	}

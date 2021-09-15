@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xenon.InstallerLoader;
 using Xenon.InstallerLoader.Metadata;
@@ -29,7 +26,7 @@ namespace Xenon.Installers.MojangClient
 		public void Initialize()
 		{
 			MojangData.MojangHelper = new();
-			Tags = new String[]
+			this.Tags = new String[]
 			{
 				"release",
 				"snapshot",
@@ -40,7 +37,7 @@ namespace Xenon.Installers.MojangClient
 		}
 
 		public String[] ListTags()
-			=> Tags;
+			=> this.Tags;
 
 		[MethodImpl(MethodImplOptions.NoInlining)]
 		public String[] ListVersions()

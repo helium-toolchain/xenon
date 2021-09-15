@@ -26,9 +26,9 @@ namespace Xenon.InstallerLoader
 		{
 			String[] installerJsons = Directory.GetFiles("./installers", "*.json");
 
-			ResolveDependencies(installerJsons);
+			this.ResolveDependencies(installerJsons);
 
-			foreach(InstallerData i in __tempData)
+			foreach(InstallerData i in this.__tempData)
 			{
 				String v = i.InstallerId;
 				Assembly installerAssembly = Assembly.LoadFile($"./installers/{i.AssemblyFileName}");
@@ -40,9 +40,9 @@ namespace Xenon.InstallerLoader
 				IInstaller ia = (IInstaller)Activator.CreateInstance(installer[0]);
 				IInstallHandler ha = (IInstallHandler)Activator.CreateInstance(handler[0]);
 
-				__installers.Add(ia.Id, ia);
-				__installerVersions.Add(ia.Id, ia.Version);
-				__installHandlers.Add(ia.Id, ha);
+				this.__installers.Add(ia.Id, ia);
+				this.__installerVersions.Add(ia.Id, ia.Version);
+				this.__installHandlers.Add(ia.Id, ha);
 			}
 		}
 
@@ -51,16 +51,16 @@ namespace Xenon.InstallerLoader
 
 			foreach(String v in jsons)
 			{
-				__tempData.Add(JsonSerializer.Deserialize<InstallerData>(v));
+				this.__tempData.Add(JsonSerializer.Deserialize<InstallerData>(v));
 
 			}
 
-			foreach(InstallerData v in __tempData)
+			foreach(InstallerData v in this.__tempData)
 			{
-				__installerData.Add(v.InstallerId, v);
-				Task.Run(() => 
-				{ 
-					ResolveDependency(v); 
+				this.__installerData.Add(v.InstallerId, v);
+				Task.Run(() =>
+				{
+					this.ResolveDependency(v);
 				});
 			}
 		}
@@ -68,7 +68,7 @@ namespace Xenon.InstallerLoader
 		private void ResolveDependency(InstallerData data)
 		{
 			// duplicate installer check
-			if((from x in __tempData
+			if((from x in this.__tempData
 				where x.InstallerId == data.InstallerId
 				select x).Count() > 1)
 			{
@@ -78,7 +78,7 @@ namespace Xenon.InstallerLoader
 			// dependency check
 			foreach(String x in data.Depends)
 			{
-				if(!__tempData.Any(xm =>
+				if(!this.__tempData.Any(xm =>
 				{
 					return xm.InstallerId == x;
 				}))
@@ -90,7 +90,7 @@ namespace Xenon.InstallerLoader
 			// incompatibility check
 			foreach(String x in data.Incompatible)
 			{
-				if(__tempData.Any(xm =>
+				if(this.__tempData.Any(xm =>
 				{
 					return xm.InstallerId == x;
 				}))
@@ -102,7 +102,7 @@ namespace Xenon.InstallerLoader
 			// recommendation check
 			foreach(String x in data.Recommends)
 			{
-				if(!__tempData.Any(xm =>
+				if(!this.__tempData.Any(xm =>
 				{
 					return xm.InstallerId == x;
 				}))

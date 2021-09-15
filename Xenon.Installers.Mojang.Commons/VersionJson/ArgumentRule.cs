@@ -7,7 +7,7 @@ namespace Xenon.Installers.Mojang.Commons.VersionJson
 	{
 		[JsonPropertyName("action")]
 		public String Action { get; set; }
-		
+
 		[JsonPropertyName("features")]
 		public ArgumentRuleFeatureCondition FeatureCondition { get; set; }
 
