@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace Xenon.Installers.Mojang.Commons.VersionJson
 {
@@ -14,5 +10,8 @@ namespace Xenon.Installers.Mojang.Commons.VersionJson
 
 		[JsonPropertyName("name")]
 		public String Name { get; set; }
+
+		[JsonPropertyName("rules")]
+		public LibraryRule[] Rules { get; set; }
 	}
 }

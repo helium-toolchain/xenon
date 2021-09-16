@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Net.Http;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 using Xenon.Installers.Mojang.Commons.Launchermeta;
 using Xenon.Installers.Mojang.Commons.VersionJson;
@@ -19,9 +17,9 @@ namespace Xenon.Installers.Mojang.Commons
 		{
 			__versionSerializerOptions = new()
 			{
-				Converters = 
-				{ 
-					new ArgumentConditionJsonConverter() 
+				Converters =
+				{
+					new ArgumentConditionJsonConverter()
 				}
 			};
 		}
@@ -36,10 +34,7 @@ namespace Xenon.Installers.Mojang.Commons
 					__launchermetaMain = new LaunchermetaDownload().Download().Result;
 				return __launchermetaMain;
 			}
-			internal set
-			{
-				__launchermetaMain = value;
-			}
+			internal set => __launchermetaMain = value;
 		}
 
 		public VersionMain this[String version]

@@ -6,15 +6,15 @@ using Xenon.InstallerLoader;
 using Xenon.InstallerLoader.Metadata;
 using Xenon.Installers.Mojang.Commons.Launchermeta;
 
-namespace Xenon.Installers.MojangServer
+namespace Xenon.Installers.MojangClient
 {
-	public class MojangServerInstaller : IInstaller
+	public class MojangClientInstaller : IInstaller
 	{
-		public String Id => "mojangserver";
+		public String Id => "mojangclient";
 
 		public TypeLib.Version Version => new(0, 0, 1);
 
-		public InstallerEnvironment Environment => InstallerEnvironment.Server;
+		public InstallerEnvironment Environment => InstallerEnvironment.Client;
 
 		[MethodImpl(MethodImplOptions.NoInlining)]
 		public void Disable()
