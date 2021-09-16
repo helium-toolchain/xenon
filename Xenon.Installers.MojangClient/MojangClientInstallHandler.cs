@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 using Xenon.InstallerLoader;
@@ -71,7 +74,36 @@ namespace Xenon.Installers.MojangClient
 
 		public void PatchVersionMeta(String version, String installDirectory)
 		{
+			VersionMain v = MojangData.MojangHelper[version];
 
+			StreamReader reader = new($"{installDirectory}/.xenon.json");
+			XenonMeta meta = JsonSerializer.Deserialize<XenonMeta>(reader.ReadToEnd());
+			reader.Close();
+
+			List<String> arguments = new();
+
+			foreach(Argument y in v.Arguments.GameArguments)
+			{
+				if(y.Rules != null 
+					&& y.Rules[0].Action == "allow" 
+					&& y.Rules[0].OperatingSystem.Name == "osx")
+				{
+					continue;
+				}
+
+				arguments = (List<String>)arguments.Concat(y.Values);
+			}
+
+			meta.Arguments = arguments.ToArray();
+
+			meta.DefaultJavaVersion = v.JavaVersion.Version.ToString();
+
+			StreamWriter writer = new($"{installDirectory}/.xenon.json");
+			writer.Write(JsonSerializer.Serialize(meta, new JsonSerializerOptions()
+			{
+				WriteIndented = true
+			}));
+			writer.Close();
 		}
 	}
 }
