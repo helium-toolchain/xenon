@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace Xenon.Installers.MojangClient.Libraries
 			httpClient = new();
 		}
 
+		[SuppressMessage("Design", "CA1822")]
 		public async Task DownloadLibrary(Library library, String installPath)
 		{
 			if(library.Rules.Length != 0 && library.Rules[0].Action == "allow" && 
