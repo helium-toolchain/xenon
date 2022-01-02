@@ -1,48 +1,69 @@
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 
 using System;
-using System.IO;
 
-using Xenon.Launcher.Properties;
 
 namespace Xenon.Launcher
 {
-	public class Xenon : Window
+	public partial class Xenon : Window
 	{
+		private Button MicrosoftBtn;
+		private Button MojangBtn;
+		private Button BackBtn;
+		private Button LoginBtn;
+		private TextBox UsernameBox;
+		private TextBox PasswordBox;
+
 		public Xenon()
 		{
-			this.InitializeComponent();
-			DataContext = new Login();
-#if DEBUG
-			this.AttachDevTools();
-#endif
+			InitializeComponent();
 		}
+
 		private void InitializeComponent()
 		{
 			AvaloniaXamlLoader.Load(this);
-			this.FindControl<Button>("Login");
-			this.FindControl<Button>("Play");
+			MicrosoftBtn = this.FindControl<Button>("MicrosoftBtn");
+			MojangBtn = this.FindControl<Button>("MojangBtn");
+			BackBtn = this.FindControl<Button>("BackBtn");
+			UsernameBox = this.FindControl<TextBox>("Username");
+			PasswordBox = this.FindControl<TextBox>("Password");
+			LoginBtn = this.FindControl<Button>("LoginBtn");
 		}
-		public void Login_OnClick(Object sender, RoutedEventArgs args)
 
+		public void MojangButton(object sender, RoutedEventArgs args)
 		{
-			Login Login = DataContext as Login;
-			Authenticate Account = new Authenticate();
-
-			Account.ObtainAccessToken(Login.Username, Login.Password);
-
-			String Path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-			String OxygenPath = Path + ".\\.oxygen";
-
-			Directory.CreateDirectory(OxygenPath);
-			File.WriteAllText(OxygenPath + ".\\launcher_accounts.json", Account.AccessToken);
+			UsernameBox.IsVisible = true;
+			PasswordBox.IsVisible = true;
+			MicrosoftBtn.IsVisible = false;
+			BackBtn.IsVisible = true;
+			LoginBtn.IsVisible = true;
+			MojangBtn.IsVisible = false;
 		}
-		public void Play_OnClick(Object sender, RoutedEventArgs args)
 
+		public void MicrosoftButton(object sender, RoutedEventArgs args)
 		{
-			//Process.Start();
+			MojangBtn.IsVisible = false;
+			BackBtn.IsVisible = true;
+			LoginBtn.IsVisible = true;
+			MicrosoftBtn.IsVisible = false;
+		}
+
+		public void BackButton(object sender, RoutedEventArgs args)
+		{
+			UsernameBox.IsVisible = false;
+			PasswordBox.IsVisible = false;
+			MojangBtn.IsVisible = true;
+			MicrosoftBtn.IsVisible = true;
+			BackBtn.IsVisible = false;
+			LoginBtn.IsVisible = false;
+		}
+
+		public void LoginButton(object sender, RoutedEventArgs args)
+		{
+			LoginBtn.IsVisible = false;
 		}
 	}
 }
