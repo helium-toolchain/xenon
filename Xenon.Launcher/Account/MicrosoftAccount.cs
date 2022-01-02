@@ -7,19 +7,23 @@ namespace Xenon.Launcher.Properties.Account
 		private String username;
 		private String accessToken;
 		private String refreshToken;
-		private Guid uuid;
-		public Int32 uses;
-		public DateTime lastUse;
+
+		public Guid Uuid { get; private set; }
+		public Int32 Uses { get; private set; }
+		public DateTime LastUse { get; private set; }
+		public String Alias 
+		{ 
+			get => this.username; 
+			private set => this.username = value; 
+		}
 
 		public MicrosoftAccount(String name, String token, String refresh, Guid uuid)
 		{
 			this.username = name;
 			this.accessToken = token;
 			this.refreshToken = refresh;
-			this.uuid = uuid;
+			this.Uuid = uuid;
 		}
-
-		public String Alias() => username;
 
 		public void Login()
 		{
@@ -31,16 +35,10 @@ namespace Xenon.Launcher.Properties.Account
 			throw new NotImplementedException();
 		}
 
-		public Int32 Uses() => uses;
-
-		public DateTime LastUse() => lastUse;
-
 		public void Use()
 		{
-			uses++;
-			lastUse = DateTime.Now;
+			Uses++;
+			LastUse = DateTime.Now;
 		}
-
-		public Guid Uuid() => uuid;
 	}
 }

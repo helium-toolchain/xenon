@@ -8,11 +8,11 @@ namespace Xenon.Launcher.Properties.Account
 {
 	public interface IAccount
 	{
-		public String Alias();
+		public String Alias { get; }
+		public Int32 Uses { get; }
+		public DateTime LastUse { get; }
+		public Guid Uuid { get; }
 		public void Login();
 		public void Use();
-		public Int32 Uses();
-		public DateTime LastUse();
-		public Guid Uuid();
 	}
 }

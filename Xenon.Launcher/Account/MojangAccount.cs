@@ -18,19 +18,23 @@ namespace Xenon.Launcher.Properties.Account
 		private String username;
 		private String accessToken;
 		private Guid clientToken;
-		private Guid uuid;
-		private Int32 uses;
-		private DateTime lastUse;
+
+		public Guid Uuid { get; private set; }
+		public Int32 Uses { get; private set; }
+		public DateTime LastUse { get; private set; }
+		public String Alias
+		{
+			get => this.username;
+			private set => this.username = value;
+		}
 
 		public MojangAccount(String username, String accessToken, Guid clientToken, Guid uuid)
 		{
 			this.username = username;
 			this.accessToken = accessToken;
 			this.clientToken = clientToken;
-			this.uuid = uuid;
+			this.Uuid = uuid;
 		}
-
-		public String Alias() => username;
 
 		public void Login()
 		{
@@ -78,16 +82,10 @@ namespace Xenon.Launcher.Properties.Account
 			return response.StatusCode;
 		}
 
-		public Int32 Uses() => uses;
-
-		public DateTime LastUse() => lastUse;
-
 		public void Use()
 		{
-			uses++;
-			lastUse = DateTime.Now;
+			this.Uses++;
+			this.LastUse = DateTime.Now;
 		}
-
-		public Guid Uuid() => uuid;
 	}
 }
